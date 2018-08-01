@@ -3,8 +3,8 @@
 const {
   destructureDigits,
   normalize,
-  parseISBN10Int,
-  parseISBN13Int
+  parseISBN10Digit,
+  parseISBN13Digit
 } = require("./utils.js");
 
 /*
@@ -36,7 +36,7 @@ function validateNormalizedISBN10(normalized) {
     return false;
   }
 
-  const parsed = normalized.map(parseISBN10Int);
+  const parsed = normalized.map(parseISBN10Digit);
   if (parsed.includes(NaN)) {
     false;
   }
@@ -60,7 +60,7 @@ function validateNormalizedISBN13(normalized) {
     return false;
   }
 
-  const parsed = normalized.map(parseISBN13Int);
+  const parsed = normalized.map(parseISBN13Digit);
   if (parsed.includes(NaN)) {
     return false;
   }

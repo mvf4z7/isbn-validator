@@ -35,7 +35,13 @@ function destructureDigits(digitsArray) {
   return [leadingDigits, checkDigit];
 }
 
-function parseISBN10Int(str) {
+function parseISBN10Digit(str) {
+  if (typeof str !== "string") {
+    throw TypeError("argument must be a single character string");
+  } else if (str.length > 1) {
+    return NaN;
+  }
+
   if (str === "X") {
     return 10;
   }
@@ -43,13 +49,19 @@ function parseISBN10Int(str) {
   return parseInt(str, 10);
 }
 
-function parseISBN13Int(str) {
+function parseISBN13Digit(str) {
+  if (typeof str !== "string") {
+    throw TypeError("argument must be a single character string");
+  } else if (str.length > 1) {
+    return NaN;
+  }
+
   return parseInt(str, 10);
 }
 
 module.exports = {
   destructureDigits,
   normalize,
-  parseISBN10Int,
-  parseISBN13Int
+  parseISBN10Digit,
+  parseISBN13Digit
 };
