@@ -7,10 +7,9 @@ const {
   parseISBN13Int
 } = require("./utils.js");
 
-/**
+/*
  * Validates ISBN-10 and ISBN-13 strings. The string may contain spaces and
  * hyphens.
- * @param {String} isbnStr ISBN string to be validated
  */
 function validate(isbnStr) {
   if (typeof isbnStr !== "string") {
@@ -30,8 +29,7 @@ function validate(isbnStr) {
 }
 
 /**
- * Validates whether the provided string is a valid ISBN-10 identifier
- * @param {string[]} normalized An ISBN string that has been normalized into its constituent parts
+ * Validates whether the provided normalized string is a valid ISBN-10 identifier
  */
 function validateNormalizedISBN10(normalized) {
   if (normalized.length !== 10) {
@@ -54,9 +52,8 @@ function validateNormalizedISBN10(normalized) {
   return checkDigit === calculatedCheckDigit;
 }
 
-/**
- * Validates whether the provided string is a valid ISBN-13 identifier
- * @param {string[]} normalized An ISBN string that has been normalized into its constituent parts
+/*
+ * Validates whether the provided normalized string is a valid ISBN-13 identifier
  */
 function validateNormalizedISBN13(normalized) {
   if (normalized.length !== 13) {
