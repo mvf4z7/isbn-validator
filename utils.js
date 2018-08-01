@@ -1,9 +1,8 @@
 "use strict";
 
-/**
+/*
  * Used to remove optional seperator characters from an ISBN string and break it
  * into the remaining constituent characters.
- * @param {String} str
  */
 function normalize(str) {
   if (typeof str !== "string") {
@@ -15,7 +14,22 @@ function normalize(str) {
   return Array.from(normalized);
 }
 
+/*
+ * Splits an array into an array of all the elements less the last element, and
+ * the last element. The results are returned as a two element array.
+ * e.g. [1, 2, 3, 4] => [[1, 2, 3], 4]
+ */
 function destructureDigits(digitsArray) {
+  if (!Array.isArray(digitsArray)) {
+    throw new TypeError("argument must be an array");
+  }
+
+  if (digitsArray.lenth === 0) {
+    return [[], undefined];
+  } else if (digitsArray.length === 1) {
+    return [[], digitsArray[0]];
+  }
+
   const leadingDigits = digitsArray.slice(0, -1);
   const [checkDigit] = digitsArray.slice(-1);
   return [leadingDigits, checkDigit];

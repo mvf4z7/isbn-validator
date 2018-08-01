@@ -11,8 +11,15 @@ describe("ISBN", () => {
       });
     });
 
-    it("should return false when passed a string with invalid characters", () => {
-      expect(validate("abcdefgh")).toBe(false);
+    it("should return false when passed a string with all invalid ISBN characters", () => {
+      expect(validate("abc#ef!hijklm")).toBe(false);
+    });
+
+    it("should return false when passed a string with a single invalid ISBN character", () => {
+      let invalidISBNStr = `${
+        ISBN13.standard[0]
+      }#${ISBN13.standard[0].substring(2)}`;
+      expect(validate(invalidISBNStr)).toBe(false);
     });
 
     it("should return false when passed an ISBN-13 string with an invalid check digit", () => {
