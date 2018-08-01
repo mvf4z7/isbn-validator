@@ -38,7 +38,7 @@ function validateNormalizedISBN10(normalized) {
 
   const parsed = normalized.map(parseISBN10Digit);
   if (parsed.includes(NaN)) {
-    false;
+    return false;
   }
 
   const [leadingDigits, checkDigit] = destructureDigits(parsed);
